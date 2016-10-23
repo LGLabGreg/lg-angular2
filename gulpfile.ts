@@ -109,7 +109,9 @@ gulp.task('watch', () => {
 
     gulp.watch([
         'src/sass/**/*.scss'
-      ], ['sass']);
+      ], ['sass']).on('change', browserSync.reload, (e) => {
+        console.log('Resource file ' + e.path + ' has been changed. Updating.');
+      });
 });
 
 gulp.task('serve', ['clean'], () =>
