@@ -6,6 +6,7 @@ const tslint = require('gulp-tslint');
 const browserSync = require('browser-sync').create('Angular2 server');
 const fallback = require('connect-history-api-fallback');
 const runSequence = require('run-sequence');
+const sass = require('gulp-sass');
 
 const tsProject = tsc.createProject('tsconfig.json');
 
@@ -56,6 +57,15 @@ gulp.task('compile', ['tslint'], () => {
 });
 
 /**
+ * Compile sass into build directory.
+ */
+gulp.task('sass', function () {
+  return gulp.src('src/sass/main.scss')
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(gulp.dest('build/css'));
+});
+
+/**
  * Copy all resources that are not TypeScript files into build directory.
  */
 gulp.task('resources', () =>
@@ -96,6 +106,10 @@ gulp.task('watch', () => {
       .on('change', browserSync.reload, (e) => {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
       });
+
+    gulp.watch([
+        'src/sass/**/*.scss'
+      ], ['sass']);
 });
 
 gulp.task('serve', ['clean'], () =>
@@ -107,6 +121,6 @@ gulp.task('serve', ['clean'], () =>
 /**
  * Build the project.
  */
-gulp.task('build', ['compile', 'resources', 'libs'], () => {
+gulp.task('build', ['compile', 'resources', 'libs', 'sass'], () => {
     console.log('Building the project ...');
 });

@@ -1,0 +1,144 @@
+/**
+//////////////////////////////
+IMPORT EXTERNAL LIBRARIES AND SASS FILES
+//////////////////////////////
+**/
+
+@import "variables/mixins";
+@import "variables/grid";
+@import "variables/config";
+
+@import "base/reset";
+@import "base/typography";
+@import "base/media";
+@import "base/forms";
+@import "base/tables";
+@import "base/grid";
+
+/**
+//////////////////////////////
+IMPORT COMPONENTS
+//////////////////////////////
+**/
+@import "components/header";
+
+//@include transition(all, 0.3s, ease-out);
+
+/**
+//////////////////////////////
+GENERAL CSS
+//////////////////////////////
+**/
+html {
+  box-sizing: border-box;
+  height: 100%;
+  overflow-x: hidden;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body{
+	background: #fff;
+	color: #333;
+	min-height: 100%;
+	//overflow-y: hidden;
+	overflow-x: hidden;
+	&.auto{
+		overflow-y: auto;
+	}
+	@include breakpoint($narrow){
+		overflow-y: auto;
+	}
+}
+
+.desktop,
+.responsive.desktop{
+	@include breakpoint($narrow){
+		display: none;
+	}
+}
+
+.mobile,
+.responsive.mobile{
+	display: none;
+	@include breakpoint($narrow){
+		display: block;
+	}
+}
+
+
+a,
+a:visited{
+	color: blue;
+	&:hover{
+		text-decoration: underline;
+	}
+}
+
+a.button,
+button{
+	position: relative;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 700;
+	height: 60px;
+	line-height: 60px;
+	color: #fff;
+	font-family: $heading-font;
+	display: inline-block;
+	border-radius: 4px;
+
+	@include breakpoint($narrow){
+		width: 100%;
+	}
+
+	&:hover{
+		
+	}
+
+	&.disabled,
+	&:disabled{
+		cursor: default;
+		&:after{
+			display: block;
+		}
+		&:hover{
+		}
+	}
+
+
+}
+
+/**
+//////////////////////////////
+MAIN PRELOADER
+//////////////////////////////
+**/
+
+
+/**
+//////////////////////////////
+MAIN CONTENT
+//////////////////////////////
+**/
+
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  margin: 0;
+  padding: 15px;
+  background: #02A8F4;
+  display: block;
+}
+
+
