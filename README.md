@@ -18,7 +18,7 @@
 repository to your local machine with:
 
 ```sh
-git clone [url]
+git clone https://github.com/LGLabGreg/lg-angular2.git
 ```
 
 Navigate to your `lg-angular2` directory,
