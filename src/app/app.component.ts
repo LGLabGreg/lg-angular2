@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
+import {enableProdMode} from '@angular/core';
+
+//enableProdMode();
 
 @Component({
   selector: 'app',
   template: `
-    <my-header [subtitle]="true"></my-header>
-  `,
-  //tell angular we are using custom tags in this component
-   directives: [HeaderComponent]
+    <main-nav></main-nav>
+    <router-outlet></router-outlet>
+    <main-footer></main-footer>
+  `
 })
-export class AppComponent {}
+
+export class AppComponent{
+
+  constructor() {
+
+  }
+
+}
