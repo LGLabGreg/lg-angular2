@@ -1,5 +1,8 @@
+///<reference path="../../typings/index.d.ts"/>
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,7 +14,8 @@ import { MainFooterComponent } from './components/main-footer/main-footer.compon
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   declarations: [ 
     AppComponent,
