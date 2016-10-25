@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'main-nav',
   host: {
-    class: 'header'
+    class: 'wrapper main-nav'
   },
   templateUrl: 'main-nav.component.html',
 })

@@ -20,7 +20,9 @@ IMPORT EXTERNAL LIBRARIES AND SASS FILES
 IMPORT COMPONENTS
 //////////////////////////////
 **/
-@import "components/header";
+@import "components/main-nav";
+@import "components/content";
+@import "components/footer";
 
 //@include transition(all, 0.3s, ease-out);
 
@@ -107,38 +109,10 @@ button{
 		}
 	}
 
-
 }
 
 /**
 //////////////////////////////
-MAIN PRELOADER
+GENERAL CSS
 //////////////////////////////
 **/
-
-
-/**
-//////////////////////////////
-MAIN CONTENT
-//////////////////////////////
-**/
-
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.header {
-  margin: 0;
-  padding: 15px;
-  background: #02A8F4;
-  display: block;
-}
-
-

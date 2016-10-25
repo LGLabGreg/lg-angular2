@@ -69,7 +69,7 @@ gulp.task('sass', function () {
  * Copy all resources that are not TypeScript files into build directory.
  */
 gulp.task('resources', () =>
-    gulp.src(['src/**/*', '!**/*.ts'])
+    gulp.src(['src/**/*', '!**/*.ts', '!src/{sass,sass/**}'])
         .pipe(gulp.dest('build')));
 
 /**
@@ -101,7 +101,8 @@ gulp.task('watch', () => {
 
     gulp.watch([
         'src/**/*.html',
-        'src/**/*.css'
+        'src/**/*.css',
+        'src/images/*'
       ], ['resources'])
       .on('change', browserSync.reload, (e) => {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');

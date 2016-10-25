@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'main-footer',
   host: {
-    class: 'footer'
+    class: 'wrapper main-footer'
   },
   templateUrl: 'main-footer.component.html',
 })
