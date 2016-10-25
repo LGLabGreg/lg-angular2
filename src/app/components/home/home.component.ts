@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import { HttpService } from '../../services/http.service';
 
-// Import RxJs required methods
-import 'rxjs/add/operator/map';
 
 @Component({
   moduleId: module.id,
@@ -18,29 +15,19 @@ export class HomeComponent {
 
   public users: any[];
 
-  constructor(private http: Http) {
+  constructor(private httpService: HttpService) {
 
   }
 
   ngOnInit() {
-    this.getData();
+    this.getUsers();
   }
  
-  getData() {
-    this.http.get('https://jsonplaceholder.typicode.com/users')
-      .map((res:Response) => res.json())
-      .subscribe(
-        data => {
-          this.users = data;
-          console.log(this.users);
-        },
-        err => {
-          console.error(err)
-        },
-        () => {
-          console.log('done')
-        }
-      );
+  getUsers() {
+    this.httpService.get('https://jsonplaceholder.typicode.com/users').subscribe(
+      data => { this.users = data },
+      err => { console.error(err) }
+    );
   }
 
 };
