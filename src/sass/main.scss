@@ -23,6 +23,7 @@ IMPORT COMPONENTS
 @import "components/main-nav";
 @import "components/content";
 @import "components/footer";
+@import "components/buttons";
 
 //@include transition(all, 0.3s, ease-out);
 
@@ -54,6 +55,11 @@ body{
 	}
 }
 
+/**
+//////////////////////////////
+HELPERS
+//////////////////////////////
+**/
 .desktop,
 .responsive.desktop{
 	@include breakpoint($narrow){
@@ -69,50 +75,3 @@ body{
 	}
 }
 
-
-a,
-a:visited{
-	color: blue;
-	&:hover{
-		text-decoration: underline;
-	}
-}
-
-a.button,
-button{
-	position: relative;
-	font-size: 20px;
-	text-transform: uppercase;
-	font-weight: 700;
-	height: 60px;
-	line-height: 60px;
-	color: #fff;
-	font-family: $heading-font;
-	display: inline-block;
-	border-radius: 4px;
-
-	@include breakpoint($narrow){
-		width: 100%;
-	}
-
-	&:hover{
-		
-	}
-
-	&.disabled,
-	&:disabled{
-		cursor: default;
-		&:after{
-			display: block;
-		}
-		&:hover{
-		}
-	}
-
-}
-
-/**
-//////////////////////////////
-GENERAL CSS
-//////////////////////////////
-**/

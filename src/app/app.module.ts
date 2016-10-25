@@ -12,9 +12,13 @@ import { HttpService } from './services/http.service';
 
 /* components */
 import { AppComponent }  from './app.component';
+
 import { MainNavComponent } from './components/main-nav/main-nav.component';
-import { HomeComponent } from './components/home/home.component';
 import { MainFooterComponent } from './components/main-footer/main-footer.component';
+
+import { HomeComponent } from './components/home/home.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/users/user.component';
 
 @NgModule({
   imports: [
@@ -26,7 +30,9 @@ import { MainFooterComponent } from './components/main-footer/main-footer.compon
     AppComponent,
     MainNavComponent,
     HomeComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    UsersComponent,
+    UserComponent
   ],
   providers: [
     HttpService

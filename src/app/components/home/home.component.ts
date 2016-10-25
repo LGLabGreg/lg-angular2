@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpService } from '../../services/http.service';
-
 
 @Component({
   moduleId: module.id,
@@ -13,21 +11,12 @@ import { HttpService } from '../../services/http.service';
 
 export class HomeComponent {
 
-  public users: any[];
-
-  constructor(private httpService: HttpService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-    this.getUsers();
-  }
- 
-  getUsers() {
-    this.httpService.get('https://jsonplaceholder.typicode.com/users').subscribe(
-      data => { this.users = data },
-      err => { console.error(err) }
-    );
+    
   }
 
 };
