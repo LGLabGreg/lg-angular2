@@ -29,3 +29,16 @@ USERS
   }
 
 }
+
+.user-container{
+  .name{
+    margin-bottom: 0px;
+  }
+
+  .username{
+    font-style: italic;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+}
