@@ -2,10 +2,10 @@
   <div class="one">
     <h1>Users</h1>
   </div>
-  <div class="onefifth" *ngFor="let user of users">
-    <h4>{{user.name}}</h4>
+  <div class="onefourth user" *ngFor="let user of users">
+    <h4 class="name">{{user.name}}</h4>
     <div class="username">{{user.username}}</div>
-    <div class="website">{{user.website}}</div>
+    <a class="website" href="http://{{user.website}}" target="_blank">www.{{user.website}}</a>
     <a class="button" href="" [routerLink]="['/user', user.id]">View Details</a>
   </div>
 </div>

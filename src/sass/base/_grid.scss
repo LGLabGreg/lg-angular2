@@ -3,7 +3,7 @@
 * Copyright 2013, LGLab
 * 19/01/2013
 */
-$largeScreen: false;
+$largeScreen: true;
 $columnsTabletPortrait: true;
 $contWidth: 1000px;
 $gutter: 20px;
@@ -177,9 +177,9 @@ $gutter: 20px;
 		.onefifth.full-tablet-portrait,
 		.twofifth.full-tablet-portrait,
 		.threefifth.full-tablet-portrait,
-		.fourfifth.full-tablet-portrait           { margin: 0 0 $gutter $gutter; width: $contWidth - $gutter * 2;}
+		.fourfifth.full-tablet-portrait { margin: 0 0 $gutter $gutter; width: $contWidth - $gutter * 2;}
 
-		.no-row                                     { margin-bottom: 0px !important;}
+		.no-row { margin-bottom: 0px !important;}
 	    .row-5                                      { margin-bottom: 5px;}
 	    .row-10                                     { margin-bottom: 10px;}
 	    .row                                        { margin-bottom: 20px;}
@@ -196,7 +196,7 @@ $gutter: 20px;
 		$contWidth: 768px;
 		$gutter: 20px;
 		
-		.container                                 { width: $contWidth;}
+		.container { width: $contWidth;}
 		.one,
 		.onehalf,
 		.onethird,
@@ -207,7 +207,7 @@ $gutter: 20px;
 		.twofifth,
 		.threefifth,
 		.fourfifth,
-		.onefourth.full                            { margin: 0 0 $gutter $gutter; width: $contWidth - $gutter * 2;}
+		.onefourth.full { margin: 0 0 $gutter $gutter; width: $contWidth - $gutter * 2;}
 
 		header.one { margin-bottom: $gutter}
 		header.one.no-row { margin-bottom: 0}
@@ -239,7 +239,10 @@ $gutter: 20px;
 	$contWidth: 420px;
 	$gutter: 15px;
 	
-	.container                                 { width: $contWidth;}
+	.container {
+		width: $contWidth;
+	}
+
 	.one,
 	.onehalf,
 	.onethird,
@@ -250,7 +253,10 @@ $gutter: 20px;
 	.twofifth,
 	.threefifth,
 	.fourfifth,
-	.onefourth.full                            { margin: 0 0 $gutter*2 $gutter; width: $contWidth - $gutter * 2;}
+	.onefourth.full {
+		margin: 0 0 $gutter*2 $gutter;
+		width: $contWidth - $gutter * 2;
+	}
 
 	header.one { margin-bottom: $gutter}
 	header.one.no-row { margin-bottom: 0}
