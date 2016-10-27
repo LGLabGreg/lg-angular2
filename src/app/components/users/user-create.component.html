@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class="one">
+    <h1>Create user</h1>
+
+    <form [formGroup]="form" (submit)="doCreate(form)">
+      <input type="text" [formControl]="form.controls['email']" placeholder="Your email">
+      <input type="text" [formControl]="form.controls['password']" placeholder="Your password"> 
+      <button type="submit">Log in</button>
+  </form>
+
+  </div>
+
+  <div class="one">
+    <a class="button back" href="" routerLink="/users">Back to Users</a>
+  </div>
+
+</div>

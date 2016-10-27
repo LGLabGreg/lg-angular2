@@ -5,6 +5,15 @@ USERS
 **/
 .users-container{
 
+  header{
+    .title{
+      display: inline;
+    }
+    .add-new{
+      float: right;
+    }
+  }
+
   .user{
     text-align: center;
     padding: 20px;

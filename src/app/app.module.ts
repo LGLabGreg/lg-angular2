@@ -3,6 +3,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* router */
 import { AppRoutingModule } from './app-routing.module';
@@ -20,12 +21,15 @@ import { MainFooterComponent } from './components/main-footer/main-footer.compon
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './components/users/user.component';
+import { UserCreateComponent } from './components/users/user-create.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [ 
     AppComponent,
@@ -33,7 +37,8 @@ import { UserComponent } from './components/users/user.component';
     HomeComponent,
     MainFooterComponent,
     UsersComponent,
-    UserComponent
+    UserComponent,
+    UserCreateComponent
   ],
   providers: [
     HttpService,
