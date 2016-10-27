@@ -1,28 +1,23 @@
 import {Component, Injectable} from '@angular/core';
 
 export interface Preloader {
-   isLoading: boolean;
+   visible: boolean;
 }
 
 @Injectable()
 export class PreloaderService {
 
-  preloading: boolean = false;
-  loader: Preloader = {isLoading: false}; 
+  preloader: Preloader = {visible: false}; 
 
   constructor() { }
 
   showLoader(){
-     this.loader.isLoading = true;
+     this.preloader.visible = true;
   }
 
   hideLoader(){
-    this.loader.isLoading = false;
+    this.preloader.visible = false;
   }
 
-  isLoading(){
-    return this.loader.isLoading;
-  }
- 
 }
 

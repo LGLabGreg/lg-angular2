@@ -8,7 +8,7 @@ import { Preloader, PreloaderService } from './services/preloader.service';
 @Component({
   selector: 'app',
   template: `
-    <div class="preloader" *ngIf="loader.isLoading"></div>
+    <div class="preloader" *ngIf="preloader.visible"></div>
     <main-nav></main-nav>
     <router-outlet></router-outlet>
     <main-footer></main-footer>
@@ -16,11 +16,11 @@ import { Preloader, PreloaderService } from './services/preloader.service';
 })
 
 export class AppComponent{
-  preloading: boolean;
-  loader: Preloader;
+
+  preloader: Preloader;
 
   constructor(private preloaderService: PreloaderService) {
-    this.loader = this.preloaderService.loader;
+    this.preloader = this.preloaderService.preloader;
   }
 
 }
