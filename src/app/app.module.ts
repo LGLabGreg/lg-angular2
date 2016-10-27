@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 /* services */
 import { HttpService } from './services/http.service';
+import { PreloaderService } from './services/preloader.service';
 
 /* components */
 import { AppComponent }  from './app.component';
@@ -35,7 +36,8 @@ import { UserComponent } from './components/users/user.component';
     UserComponent
   ],
   providers: [
-    HttpService
+    HttpService,
+    PreloaderService
   ],
   bootstrap: [
     AppComponent

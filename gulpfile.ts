@@ -77,6 +77,7 @@ gulp.task('resources', () =>
  */
 gulp.task('libs', () =>
     gulp.src([
+        'core-js/client/shim.min.js',
         'es6-shim/es6-shim.min.js',
         'systemjs/dist/system-polyfills.js',
         'systemjs/dist/system.src.js',
