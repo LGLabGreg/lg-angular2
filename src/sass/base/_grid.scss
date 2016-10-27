@@ -236,11 +236,12 @@ $gutter: 20px;
 
 @media only screen and (max-width: 767px) {
 	
-	$contWidth: 420px;
+	$contWidth: 100%;
 	$gutter: 15px;
 	
 	.container {
 		width: $contWidth;
+		padding: 0 $gutter;
 	}
 
 	.one,
@@ -254,8 +255,8 @@ $gutter: 20px;
 	.threefifth,
 	.fourfifth,
 	.onefourth.full {
-		margin: 0 0 $gutter*2 $gutter;
-		width: $contWidth - $gutter * 2;
+		margin: 0 0 $gutter*2 0;
+		width: 100%;
 	}
 
 	header.one { margin-bottom: $gutter}
@@ -272,7 +273,7 @@ $gutter: 20px;
 ================================================== */
 
     /* Note: Design for a width of 320px */
-
+/*
 @media only screen and (max-width: 480px) {
 		
 		
@@ -297,6 +298,7 @@ $gutter: 20px;
 	
 		
 }
+*/
 
 
 /* #Clearing
