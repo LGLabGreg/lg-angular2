@@ -3,11 +3,7 @@ import {enableProdMode} from '@angular/core';
 
 //enableProdMode();
 
-export interface Preloader {
-   isLoading: boolean;
-}
-
-import { PreloaderService } from './services/preloader.service';
+import { Preloader, PreloaderService } from './services/preloader.service';
 
 @Component({
   selector: 'app',
