@@ -13,6 +13,10 @@ export class HttpService {
   get(url: string){
     return this.http.get(url).map((res:Response) => res.json());
   }
+
+  post(url: string, data: Object){
+    return this.http.post(url, data).map((res:Response) => res.json());
+  }
  
 }
 

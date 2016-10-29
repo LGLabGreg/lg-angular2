@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* router */
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.route';
 
 /* services */
 import { HttpService } from './services/http.service';

@@ -31,10 +31,12 @@ button{
   &.disabled,
   &:disabled{
     cursor: default;
+    background: $dark-grey;
     &:after{
       display: block;
     }
     &:hover{
+      background: $dark-grey;
     }
   }
 
