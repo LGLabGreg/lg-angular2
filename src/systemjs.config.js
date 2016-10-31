@@ -25,8 +25,12 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
 
       // other libraries
-      'rxjs':                      'npm:rxjs',
+      'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'core-js-shim':'npm:core-js/client/shim.min.js',
+      'es6-shim':'npm:es6-shim/es6-shim.min.js',
+      'zone':'npm:zone.js/dist/zone.js',
+      'reflect':'npm:reflect-metadata/Reflect.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
