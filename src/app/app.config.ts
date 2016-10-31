@@ -1,4 +1,4 @@
-export const AppConfig: Object = {
+export const AppConfig: any = {
   'api': {
 
   },
