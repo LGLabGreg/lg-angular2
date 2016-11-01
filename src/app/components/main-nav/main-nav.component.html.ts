@@ -1,0 +1,7 @@
+export const htmlTemplate = `
+    <div class="container">
+      <div class="one">
+        <a routerLink="/home"><img class="logo" src="images/logo.png" alt="logo"></a>
+      </div>
+    </div>
+`;

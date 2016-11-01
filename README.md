@@ -36,6 +36,11 @@ npm install
 ```sh
 npm start
 ```
+App will be compiled in build folder with browsersynch serving the app. App will be watched for changed and recompiled.
 
-A new `build` directory should be created from where serving the rendered app,
-then your browser should opens pointing to your compiled project
+## Production
+
+```sh
+gulp dist && node server.js
+```
+App will be compiled/bundled/minified for production in dist folder and server started in port 8080

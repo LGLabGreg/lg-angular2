@@ -18,8 +18,8 @@ const Builder = require('systemjs-builder');
 
 
 const bundleHash = new Date().getTime();
-const mainBundleName = bundleHash + '.main.bundle.js';
-const vendorBundleName = bundleHash + '.vendor.bundle.js';
+const mainBundleName = 'js/' + bundleHash + '.main.bundle.js';
+const vendorBundleName = 'js/' + bundleHash + '.vendor.bundle.js';
 
 /////////////////////////////////////////////////////
 //HELPERS

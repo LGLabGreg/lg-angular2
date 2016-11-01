@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { htmlTemplate } from './home.component.html';
 
 @Component({
   moduleId: module.id,
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   host: {
     class: 'wrapper content'
   },
-  templateUrl: 'home.component.html',
+  template: htmlTemplate
 })
 
 export class HomeComponent {

@@ -6,6 +6,8 @@ import { PreloaderService } from '../../services/preloader.service';
 
 import { AppConfig } from '../../app.config';
 
+import { htmlTemplate } from './user-create.component.html';
+
 
 @Component({
   moduleId: module.id,
@@ -13,7 +15,7 @@ import { AppConfig } from '../../app.config';
   host: {
     class: 'wrapper content user-create-container'
   },
-  templateUrl: 'user-create.component.html',
+  template: htmlTemplate
 })
 
 export class UserCreateComponent {
