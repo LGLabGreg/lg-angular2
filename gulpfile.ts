@@ -10,11 +10,31 @@ const sass = require('gulp-sass');
 
 const tsProject = tsc.createProject('tsconfig.json');
 
+
+//prod
+const shell = require('gulp-shell');
+const htmlreplace = require('gulp-html-replace');
+const Builder = require('systemjs-builder');
+
+
+const bundleHash = new Date().getTime();
+const mainBundleName = bundleHash + '.main.bundle.js';
+const vendorBundleName = bundleHash + '.vendor.bundle.js';
+
+/////////////////////////////////////////////////////
+//HELPERS
+/////////////////////////////////////////////////////
+
 /**
- * Remove build directory.
+ * Remove build/dist directories.
  */
-gulp.task('clean', (cb) =>
+gulp.task('clean', ['clean:build', 'clean:dist']);
+
+gulp.task('clean:build', (cb) =>
     del(['build'], cb));
+
+gulp.task('clean:dist', (cb) =>
+    del(['dist'], cb));
 
 /**
  * Lint all custom TypeScript files.
@@ -23,6 +43,11 @@ gulp.task('tslint', () =>
   gulp.src('src/**/*.ts')
       .pipe(tslint())
       .pipe(tslint.report('prose')));
+
+
+/////////////////////////////////////////////////////
+//DEVELOPMENT TASKS
+/////////////////////////////////////////////////////
 
 /**
  * Start serving the build folder
@@ -41,6 +66,33 @@ gulp.task('start:server', () => {
       ]
     }
   });
+});
+
+/**
+ * Watch for changes in TypeScript, HTML and CSS files.
+ */
+gulp.task('watch', () => {
+    gulp.watch([
+        'src/**/*.ts'
+      ], ['compile'])
+      .on('change', browserSync.reload, (e) => {
+        console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
+    });
+
+    gulp.watch([
+        'src/**/*.html',
+        'src/**/*.css',
+        'src/images/*'
+      ], ['resources:build'])
+      .on('change', browserSync.reload, (e) => {
+        console.log('Resource file ' + e.path + ' has been changed. Updating.');
+      });
+
+    gulp.watch([
+        'src/sass/**/*.scss'
+      ], ['sass']).on('change', browserSync.reload, (e) => {
+        console.log('Resource file ' + e.path + ' has been changed. Updating.');
+      });
 });
 
 /**
@@ -66,9 +118,9 @@ gulp.task('sass', function () {
 });
 
 /**
- * Copy all resources that are not TypeScript files into build directory.
+ * Copy all resources:build that are not TypeScript files into build directory.
  */
-gulp.task('resources', () =>
+gulp.task('resources:build', () =>
     gulp.src(['src/**/*', '!**/*.ts', '!src/{sass,sass/**}'])
         .pipe(gulp.dest('build')));
 
@@ -90,41 +142,100 @@ gulp.task('libs', () =>
       .pipe(gulp.dest('build/lib')));
 
 /**
- * Watch for changes in TypeScript, HTML and CSS files.
+ * Build the project.
  */
-gulp.task('watch', () => {
-    gulp.watch([
-        'src/**/*.ts'
-      ], ['compile'])
-      .on('change', browserSync.reload, (e) => {
-        console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
-    });
-
-    gulp.watch([
-        'src/**/*.html',
-        'src/**/*.css',
-        'src/images/*'
-      ], ['resources'])
-      .on('change', browserSync.reload, (e) => {
-        console.log('Resource file ' + e.path + ' has been changed. Updating.');
-      });
-
-    gulp.watch([
-        'src/sass/**/*.scss'
-      ], ['sass']).on('change', browserSync.reload, (e) => {
-        console.log('Resource file ' + e.path + ' has been changed. Updating.');
-      });
+gulp.task('build', ['compile', 'resources:build', 'libs', 'sass'], () => {
+    console.log('Building the project ...');
 });
 
+
+/**
+ * Main development task
+ */
 gulp.task('serve', ['clean'], () =>
   runSequence(
     'build',
     ['start:server', 'watch']
   ));
 
-/**
- * Build the project.
- */
-gulp.task('build', ['compile', 'resources', 'libs', 'sass'], () => {
-    console.log('Building the project ...');
+
+/////////////////////////////////////////////////////
+//PRODUCTION TASKS
+/////////////////////////////////////////////////////
+
+gulp.task('bundle', ['bundle:vendor', 'bundle:app'], function () {
+    return gulp.src('build/index.html')
+        .pipe(htmlreplace({
+            'app': mainBundleName,
+            'vendor': vendorBundleName
+        }))
+        .pipe(gulp.dest('./dist'));
 });
+
+gulp.task('bundle:vendor', function () {
+  const builder = new Builder();
+  builder.config(
+    {
+      map: {
+        'core-js-shim':'node_modules/core-js/client/shim.min.js',
+        'es6-shim':'node_modules/es6-shim/es6-shim.min.js',
+        'zone':'node_modules/zone.js/dist/zone.js',
+        'reflect':'node_modules/reflect-metadata/Reflect.js'
+      }
+    }
+  );
+  return builder
+      .buildStatic('build/app/vendor.js', './dist/' + vendorBundleName)
+      .catch(function (err) {
+          console.log('Vendor bundle error');
+          console.log(err);
+      });
+});
+
+gulp.task('bundle:app', function () {
+  
+  const builder = new Builder();
+  builder.config(
+    {
+      paths: {'*': '*.js'},
+      map: {
+        '@angular/core': 'node_modules/@angular/core/bundles/core.umd',
+        '@angular/common': 'node_modules/@angular/common/bundles/common.umd',
+        '@angular/compiler': 'node_modules/@angular/compiler/bundles/compiler.umd',
+        '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd',
+        '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd',
+        '@angular/http': 'node_modules/@angular/http/bundles/http.umd',
+        '@angular/router': 'node_modules/@angular/router/bundles/router.umd',
+        '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd',
+        '@angular/upgrade': 'node_modules/@angular/upgrade/bundles/upgrade.umd',
+        'rxjs': 'node_modules/rxjs',
+      }
+    }
+  );
+  return builder
+      .buildStatic('build/app/main', './dist/' + mainBundleName)
+      .catch(function (err) {
+          console.log('App bundle error');
+          console.log(err);
+      });
+      
+});
+
+/**
+ * Copy all resources that are not TypeScript files into dist directory.
+ */
+gulp.task('resources:dist', () =>
+    gulp.src(['build/**/*', '!build/{lib,lib/**}', '!build/{app,app/**}', '!**/*.js', '!**/*.html'])
+        .pipe(gulp.dest('dist')));
+
+
+/**
+ * Main production task
+ */
+
+gulp.task('dist', function(done) {
+    runSequence('clean', 'build', 'bundle', 'resources:dist', 'clean:build', function() {
+        done();
+    });
+});
+
