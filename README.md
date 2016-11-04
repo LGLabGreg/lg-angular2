@@ -1,7 +1,5 @@
 # Angular2 Starter Kit
 
-## Setup
-
 ### Prerequisites
 
 *   [NodeJS](https://nodejs.org/)
