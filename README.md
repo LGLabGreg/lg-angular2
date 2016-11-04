@@ -26,6 +26,14 @@ App will be compiled in build folder with browsersynch serving the app. App will
 ### Production
 
 ```sh
-gulp dist && node server.js
+gulp dist
 ```
-App will be compiled/bundled/minified for production in dist folder and server started in port 8080
+App will be compiled/bundled/minified for production in dist folder.
+
+Because of the `<base href="/">`, you will need to run the node server if you want to view the bundled app locally, just run the following and go to http://localhost:8080/
+
+```sh
+node server.js
+```
+
+
