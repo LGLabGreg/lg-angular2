@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { PreloaderService } from '../../services/preloader.service';
 
-import { htmlTemplate } from './users.component.html';
+//import { htmlTemplate } from './users.component.html';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { htmlTemplate } from './users.component.html';
   host: {
     class: 'wrapper content users-container'
   },
-  template: htmlTemplate
+  templateUrl: 'users.component.html'
 })
 
 export class UsersComponent {

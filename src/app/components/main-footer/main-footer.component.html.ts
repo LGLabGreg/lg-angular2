@@ -1,7 +1,0 @@
-export const htmlTemplate = `
-    <div class="container">
-      <div class="one no-row">
-        <p class="copyright">&copy; 2016 - LGLab</p>
-      </div>
-    </div>
-`;

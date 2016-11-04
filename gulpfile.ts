@@ -7,6 +7,7 @@ const browserSync = require('browser-sync').create('Angular2 server');
 const fallback = require('connect-history-api-fallback');
 const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
+const embedTemplates = require('gulp-angular-embed-templates');
 
 const tsProject = tsc.createProject('tsconfig.json');
 
@@ -101,6 +102,7 @@ gulp.task('watch', () => {
 gulp.task('compile', ['tslint'], () => {
     let tsResult = gulp.src('src/**/*.ts')
         .pipe(sourcemaps.init())
+        .pipe(embedTemplates())
         .pipe(tsc(tsProject));
 
     return tsResult.js
@@ -121,7 +123,7 @@ gulp.task('sass', function () {
  * Copy all resources:build that are not TypeScript files into build directory.
  */
 gulp.task('resources:build', () =>
-    gulp.src(['src/**/*', '!**/*.ts', '!src/{sass,sass/**}'])
+    gulp.src(['src/**/*', '!**/*.ts', '!src/app/**/*.html', '!src/{sass,sass/**}'])
         .pipe(gulp.dest('build')));
 
 /**

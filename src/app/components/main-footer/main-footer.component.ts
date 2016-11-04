@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { htmlTemplate } from './main-footer.component.html';
+//import { htmlTemplate } from './main-footer.component.html';
 
 @Component({
   moduleId: module.id,
@@ -7,7 +7,7 @@ import { htmlTemplate } from './main-footer.component.html';
   host: {
     class: 'wrapper main-footer'
   },
-  template: htmlTemplate
+  templateUrl: 'main-footer.component.html'
 })
 
 export class MainFooterComponent {

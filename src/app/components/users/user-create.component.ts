@@ -6,7 +6,7 @@ import { PreloaderService } from '../../services/preloader.service';
 
 import { AppConfig } from '../../app.config';
 
-import { htmlTemplate } from './user-create.component.html';
+//import { htmlTemplate } from './user-create.component.html';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { htmlTemplate } from './user-create.component.html';
   host: {
     class: 'wrapper content user-create-container'
   },
-  template: htmlTemplate
+  templateUrl: 'user-create.component.html'
 })
 
 export class UserCreateComponent {

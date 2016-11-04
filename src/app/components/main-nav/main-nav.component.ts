@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { htmlTemplate } from './main-nav.component.html';
+//import { htmlTemplate } from './main-nav.component.html';
 
 @Component({
   moduleId: module.id,
@@ -7,7 +7,7 @@ import { htmlTemplate } from './main-nav.component.html';
   host: {
     class: 'wrapper main-nav'
   },
-  template: htmlTemplate
+  templateUrl: 'main-nav.component.html'
 })
 
 export class MainNavComponent {

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { PreloaderService } from '../../services/preloader.service';
 
-import { htmlTemplate } from './user.component.html';
+//import { htmlTemplate } from './user.component.html';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { htmlTemplate } from './user.component.html';
   host: {
     class: 'wrapper content user-container'
   },
-  template: htmlTemplate
+  templateUrl: 'user.component.html'
 })
 
 export class UserComponent {
