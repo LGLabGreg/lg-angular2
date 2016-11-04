@@ -1,4 +1,4 @@
-# Angular2 Starter Kit
+# Angular2 Starter Kit (Work in progress..)
 
 ### Prerequisites
 
@@ -16,14 +16,14 @@ cd lg-angular2
 npm install
 ```
 
-## Development
+### Development
 
 ```sh
 npm start
 ```
 App will be compiled in build folder with browsersynch serving the app. App will be watched for changed and recompiled.
 
-## Production
+### Production
 
 ```sh
 gulp dist && node server.js
