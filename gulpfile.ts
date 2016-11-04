@@ -8,6 +8,8 @@ const fallback = require('connect-history-api-fallback');
 const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
 const embedTemplates = require('gulp-angular-embed-templates');
+const uglify = require('gulp-uglify');
+const pump = require('pump');
 
 const tsProject = tsc.createProject('tsconfig.json');
 
@@ -231,12 +233,23 @@ gulp.task('resources:dist', () =>
         .pipe(gulp.dest('dist')));
 
 
+gulp.task('compress', function (cb) {
+  pump([
+        gulp.src('dist/js/*.js'),
+        uglify(),
+        gulp.dest('dist/js')
+    ],
+    cb
+  );
+});
+
+
 /**
  * Main production task
  */
 
 gulp.task('dist', function(done) {
-    runSequence('clean', 'build', 'bundle', 'resources:dist', 'clean:build', function() {
+    runSequence('clean', 'build', 'bundle', 'resources:dist', 'compress', 'clean:build', function() {
         done();
     });
 });
