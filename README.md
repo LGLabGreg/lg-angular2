@@ -1,7 +1,5 @@
 # Angular2 Starter Kit
 
----
-
 ## Setup
 
 ### Prerequisites
@@ -14,22 +12,11 @@
 
 ### Installation
 
-[Download the latest release][latest_release] of this project or Git clone this
-repository to your local machine with:
-
 ```sh
 git clone https://github.com/LGLabGreg/lg-angular2.git
-```
-
-Navigate to your `lg-angular2` directory,
-
-Then install all the dependencies with:
-
-```sh
+cd lg-angular2
 npm install
 ```
-
-`node_modules` and `typings` directories should be created during the install.
 
 ## Development
 
